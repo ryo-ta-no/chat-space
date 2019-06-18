@@ -44,7 +44,7 @@ has_many :messages
 |group_id|integer|foreign_key: true|
 |user_id|integer|foreign_key: true|
 
-###Association
+### Association
 - belongs_to :group
 - belongs_to :user
 
@@ -67,6 +67,6 @@ has_many :messages
 |group|references|index: true, foreign_key: true, null: false|
 |user|references|index: true, foreign_key: true, null: false|
 
-###Associacion
+### Associacion
 - belongs_to :group
 - belongs_to :user
