@@ -18,19 +18,19 @@
           = fa_icon 'cog'
 
     .sidebar__groups
-      %a{:href => ""}
+      =link_to "" do
         .sidebar__groups__list
           %p.group1-name
             group1
           %p.group1-message
             おはよう
-      %a{:href => ""}
+      =link_to "" do
         .sidebar__groups__list
           %p.group2-name
             group2
           %p.group2-message
             こんにちは
-      %a{:href => ""}
+      =link_to "" do
         .sidebar__groups__list
           %p.group3-name
             group3
@@ -53,7 +53,7 @@
             noda
       
       .group__edit-btn
-        %input{:type => "submit", :value => "edit"}
+        %input{type: "submit", value: "edit"}
 
     .main-contents__message
       .messages
@@ -66,10 +66,10 @@
           おはよう
 
     .main-contents__bottom
-      %form{:id => "new-message", :method => "post"}
+      %form{id: "new-message", method: "post"}
         .input-box
-          %input{:name => "text", :value => "type a message", :placeholder => "type a message", :type => "text", :class => "comment"}
+          %input{name: "text", value: "type a message", placeholder: "type a message", type: "text", class: "comment"}
           %label.upload-label{for: "upload-icon"}
             %i.fa.fa-picture-o
-            %input{:name => "datafile", :type => "file", :id => "upload-icon", :class => "image-label__input"}
-        %input{:type => "submit", :value => "send", :class => "message__box__end-btn"}
+            %input{name: "datafile", type: "file", id: "upload-icon", class: "image-label__input"}
+        %input{type: "submit", value: "send", class: "message__box__end-btn"}
