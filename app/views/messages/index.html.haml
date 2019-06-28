@@ -1,0 +1,75 @@
+%header
+  グループを作成しました
+
+.main-box
+
+  .sidebar
+
+    .sidebar__header
+      %h1
+        noda
+      %ul.sidebar__header--menu
+        %li
+        =link_to "", class: "Contents__btn" do
+          = fa_icon 'users'
+          %span<>
+        %li
+        =link_to "", class: "Contents__btn" do
+          = fa_icon 'cog'
+
+    .sidebar__groups
+      =link_to "" do
+        .sidebar__groups__list
+          %p.group1-name
+            group1
+          %p.group1-message
+            おはよう
+      =link_to "" do
+        .sidebar__groups__list
+          %p.group2-name
+            group2
+          %p.group2-message
+            こんにちは
+      =link_to "" do
+        .sidebar__groups__list
+          %p.group3-name
+            group3
+          %p.group3-message
+            こんばんは
+
+
+  .main-contents
+
+    .main-contents__header
+
+      .main-contents__header__group-name
+
+        %h2
+          group1
+
+        %ul.member-list
+          member: 
+          %li.member-list__member
+            noda
+      
+      .group__edit-btn
+        %input{type: "submit", value: "edit"}
+
+    .main-contents__message
+      .messages
+        .message-data
+          %p.message-data__name
+            noda
+          %p.message-data__date
+            2019/06/21(Fri) 17:17:18
+        %p.message-data__text
+          おはよう
+
+    .main-contents__bottom
+      %form{id: "new-message", method: "post"}
+        .input-box
+          %input{name: "text", value: "type a message", placeholder: "type a message", type: "text", class: "comment"}
+          %label.upload-label{for: "upload-icon"}
+            %i.fa.fa-picture-o
+            %input{name: "datafile", type: "file", id: "upload-icon", class: "image-label__input"}
+        %input{type: "submit", value: "send", class: "message__box__end-btn"}
