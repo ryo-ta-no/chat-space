@@ -1,68 +1,50 @@
-.main-box
+.chat
+
   = render :partial => 'devise/shared/side_bar.html'
 
-  -# .sidebar
+  .header
 
-  -#   .sidebar__header
-  -#     %h1
-  -#       noda
-  -#     %ul.sidebar__header--menu
-  -#       %li
-  -#       =link_to "", class: "Contents__btn" do
-  -#         = fa_icon 'users'
-  -#         %span<>
-  -#       %li
-  -#       =link_to "", class: "Contents__btn" do
-  -#         = fa_icon 'cog'
+    .left-header
 
-  -#   .sidebar__groups
-  -#     =link_to "" do
-  -#       .sidebar__groups__list
-  -#         %p.group1-name
-  -#           group1
-  -#         %p.group1-message
-  -#           おはよう
-  -#     =link_to "" do
-  -#       .sidebar__groups__list
-  -#         %p.group2-name
-  -#           group2
-  -#         %p.group2-message
-  -#           こんにちは
-  -#     =link_to "" do
-  -#       .sidebar__groups__list
-  -#         %p.group3-name
-  -#           group3
-  -#         %p.group3-message
-  -#           こんばんは
-
-
-  .main-contents
-
-    .main-contents__header
-
-      .main-contents__header__group-name
+      .left-header__title
 
         %h2
           = @group.name
 
-        %ul.member-list
-          = "Member:"
-          %li.member-list__member
-            - @group.users.each do |user|
-              = user.name
-      
-      .group__edit-btn
-        = link_to edit_group_path(current_user) do
-          edit
+        %ul.left-header__members
 
-    .main-contents__message
+          = "Member:"
+
+          %li.member
+
+            - @group.users.each do |user|
+
+              = user.name
+
+      .right-header
+
+        .right-header__button
+
+          = link_to edit_group_path(current_user) do
+
+            Edit
+
+    .messages
+
       = render partial: 'message', collection: @messages
 
     .form
+
       = form_for [@group, @message] do |f|
+
         = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+
         .form__mask
+
           = f.label :image, class: 'form__mask__image' do
+
             = fa_icon 'picture-o', class: 'icon'
+
             = f.file_field :image, class: 'hidden'
+
         = f.submit 'Send', class: 'form__submit'
