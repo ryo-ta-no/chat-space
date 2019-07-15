@@ -3,9 +3,9 @@ $(function(){
   function buildMessage(message){
     
     var img = ""
-    if (message.image !== null) {
-        img = `<img src="${message.image}">`
-    }
+    
+    message.image !== null ? img = `<img src="${message.image}">` : img = ""
+
     var html = `<div class="message">
                   <div class="upper-message">
                     <div class="upper-message__user-name">
@@ -22,7 +22,6 @@ $(function(){
                     ${ img }
                   </div>
                 </div>`
-
     return html;
   }
 
@@ -41,12 +40,9 @@ $(function(){
     })
 
     .done(function(message){
-      console.log(message)
       var html = buildMessage(message);
-      console.log(html)
       $('.messages').append(html)
-      $('#message_content').val('')
-      $('#message_image').val('')
+      $('form')[0].reset();
       $('.form__submit').prop('disabled', false);
       $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight});
     })
