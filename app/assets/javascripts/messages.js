@@ -1,10 +1,8 @@
 $(function(){
 
   function buildMessage(message){
-    
-    var img = ""
-    
-    message.image !== null ? img = `<img src="${message.image}">` : img = ""
+
+    var img = message.image !== null ? `<img src="${message.image}">` :  ""
 
     var html = `<div class="message">
                   <div class="upper-message">
