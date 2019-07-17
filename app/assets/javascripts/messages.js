@@ -4,9 +4,9 @@ $(function(){
 
   function buildMessage(message){
 
-    var img = message.image !== null ? `<img src="${message.image}">` :  ""
+    var img = message.image.url !== null ? `<img src="${message.image.url}">` :  ""
 
-    var html = `<div class="message">
+    var html = `<div class="message" data-id="${message.id}">
                   <div class="upper-message">
                     <div class="upper-message__user-name">
                       ${ message.user_name }
@@ -51,6 +51,32 @@ $(function(){
       alert('エラー:メッセージを送信してください');
     })
   })
+  
+  $(function() {
+  var reloadMessages = function() {
+    var last_message_id = $('.message').last().data('id');
+    var href = 'api/messages'
+    $.ajax({
+    url: href,
+    type: 'GET',
+    dataType: 'json',
+    data: {id: last_message_id}
+    })
+
+    .done(function(messages){
+      messages.forEach(function(message){
+        var insertHTML = buildMessage(message)
+        $('.message').append(insertHTML)
+      });
+      $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
+    })
+
+    .fail(function(){
+      console.log('error');
+    });
+  };
+  setInterval(reloadMessages, 5000);
+  });
 });
 
 });
