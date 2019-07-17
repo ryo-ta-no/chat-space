@@ -1,3 +1,5 @@
+$(document).on('turbolinks:load', function() {
+
 $(function(){
 
   function buildMessage(message){
@@ -49,4 +51,6 @@ $(function(){
       alert('エラー:メッセージを送信してください');
     })
   })
+});
+
 });
