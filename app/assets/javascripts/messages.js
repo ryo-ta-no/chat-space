@@ -4,7 +4,7 @@ $(function(){
 
   function buildMessage(message){
 
-    var img = message.image.url !== null ? `<img src="${message.image.url}">` :  ""
+    var img = message.image.url !== null ? `<img src="${message.image.url}">` : ""
 
     var html = `<div class="message" data-id="${message.id}">
                   <div class="upper-message">
@@ -51,10 +51,11 @@ $(function(){
       alert('エラー:メッセージを送信してください');
     })
   })
-  
+
   $(function() {
   var reloadMessages = function() {
     var last_message_id = $('.message').last().data('id');
+    
     var href = 'api/messages'
     $.ajax({
     url: href,
@@ -64,10 +65,14 @@ $(function(){
     })
 
     .done(function(messages){
-      messages.forEach(function(message){
-        var insertHTML = buildMessage(message)
-        $('.message').append(insertHTML)
-      });
+      var insertHTML
+      if (messages !== null) {
+        messages.forEach(function(message){
+          insertHTML = buildMessage(message)
+          $('.messages').append(insertHTML)
+        });
+      }
+
       $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
     })
 
